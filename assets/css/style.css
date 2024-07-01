@@ -1,0 +1,436 @@
+@font-face {
+    font-family: Bungee;
+    src: url(/assets/fond/babyblocks.ttf);
+}
+
+@font-face {
+    font-family: Crang;
+    src: url(/assets/fond/HeyAugust.ttf);
+}
+
+@font-face {
+    font-family: FippsRegular;
+    src: url(../fond/FippsRegular.otf);
+}
+@font-face {
+    font-family: GameOn;
+    src: url(../fond/GameOn.ttf);
+}
+
+body {
+    margin: 0;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 6vw;
+    height: 20px;
+  
+  }
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    border-radius: 20px;
+    width: 6vw;
+    height: 2vh;
+    top: 0px;
+    bottom: 0;
+    background: linear-gradient(#c1c0c0, #FFF 20%, #bdbdbd 80%, #DDD);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 28px;
+    width: 28px;
+    left: 1px;
+    top: -3px;
+    background-image: url(../imgs/x.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider:before {
+    background-image:none;
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  .switch .slider::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 1px;
+    width: 28px;
+    height: 28px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+  }
+  
+  .switch input:checked + .slider::after {
+    background-image: url(../imgs/o.png);
+    opacity: 1;
+    transition: opacity 0.7s ease-in-out, transform 0.7s ease-in-out;
+
+  }
+  .hidden{
+display: none;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+header .switch{
+    right: 85vh;
+    top: 4vw;
+}
+header button {
+    
+    align-self: center;
+    background-size: 4px 3px;
+    border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+    border-style: solid;
+    border-width: 2px;
+    box-shadow: rgba(0, 0, 0, .2) 15px 28px 25px -18px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    outline: none;
+    padding: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: all 235ms ease-in-out;
+    border-bottom-left-radius: 15px 255px;
+    border-bottom-right-radius: 225px 15px;
+    border-top-left-radius: 255px 15px;
+    border-top-right-radius: 15px 225px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+header button:hover {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 8px -5px;
+    transform: translate3d(0, 2px, 0);
+}
+
+header button:focus {
+    box-shadow: rgba(0, 0, 0, .3) 2px 8px 4px -6px;
+}
+
+#btnPlay img {
+    width: 50px;
+}
+
+#btnReplay img {
+    width: 50px;
+}
+#btnReplay {
+    position: relative;
+    top: 3vh;
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    padding-top: 1%;
+    letter-spacing: 10px;
+    font-size: 50px;
+    text-align: center;
+    font-family: "Bungee";
+}
+
+main {
+    padding: 40px;
+}
+
+
+#gameContainer {
+    font-family: "Crang";
+    font-size: 50px;
+    border-radius: 20px;
+    background-color: #f1e9bfd1;
+    width: 50vw;
+    position: absolute;
+    left: 23%;
+    top: 33vh;
+    background: linear-gradient(#dcc361da, #eeee04 20%, #eeee04 50%, #dcc361da);
+   
+}
+
+.player {
+    --b: 3px;
+    --s: .45em;
+    --color: #373B44;
+    padding: calc(.5em + var(--s)) calc(.9em + var(--s));
+    color: var(--color);
+    --_p: var(--s);
+    background:
+        conic-gradient(from 90deg at var(--b) var(--b), #0000 90deg, var(--color) 0) var(--_p) var(--_p)/calc(100% - var(--b) - 2*var(--_p)) calc(100% - var(--b) - 2*var(--_p));
+    transition: .3s linear, color 0s, background-color 0s;
+    outline: var(--b) solid #0000;
+    outline-offset: .6em;
+    font-size: 15px;
+    font-family: FippsRegular;
+    border: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+
+.player:hover,
+.player:focus-visible {
+    --_p: 0px;
+    outline-color: var(--color);
+    outline-offset: .05em;
+}
+
+.player:active {
+    background: var(--color);
+    color: #fff;
+}
+
+#onevsone {
+    position: absolute;
+    top: 22vh;
+    left: 20%;
+    padding: 2vh 5vw;
+}
+
+#onevscpu {
+    position: absolute;
+    top: 22vh;
+    right: 22%;
+    padding: 2vh 6vw;
+}
+
+.grid {
+    
+    flex-direction: column;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10vh 0vw;
+}
+
+.line {
+    margin: 0 auto;
+    display: flex;
+
+}
+
+.cell {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border: 5px solid black;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: #f6f6f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-style: inset;
+    
+}
+#gameContainer p {
+font-size: 50px;
+font-family: GameOn;
+position: relative;
+left: 40%;
+top: 3vh;
+margin: 0%;
+color: black;
+text-shadow: rgba(0, 0, 0, 0.833) 1px 1px 3px;
+}
+.grid.connect-four {
+    padding: 5%;
+    border-radius: 10px;
+    
+  }
+  
+  .grid.connect-four .cell {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .grid.connect-four .cell:hover {
+    background-color: #f0f0f0;
+    
+  }
+  
+  .grid.connect-four .cell[data-player="X"] {
+    background: linear-gradient(217deg, rgba(85, 77, 77, 0.8), rgb(255, 0, 0) 70%),
+            linear-gradient(127deg, rgba(85, 77, 77, 0.8), rgb(255, 213, 0) 70%),
+            linear-gradient(336deg, rgba(85, 77, 77, 0.8), rgb(255, 213, 0) 70%);
+    color: rgba(255, 0, 0, 0);
+  }
+  
+  .grid.connect-four .cell[data-player="O"] {
+    
+    background: linear-gradient(217deg, rgba(58, 54, 54, 0.8), rgb(255, 213, 0) 60%),
+            linear-gradient(127deg, rgba(33, 31, 31, 0.8), rgb(221, 24, 24) 60%),
+            linear-gradient(336deg, rgba(45, 41, 41, 0.8), rgb(255, 0, 0) 60%);
+    color: #fac80200;
+  }
+
+
+footer {
+    position: fixed;
+    right: 5vh;
+    bottom: 0;
+    width: 100%;
+}
+
+.fin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+footer img {
+    height: 20px;
+}
+@media (max-width: 1366px) {
+    h1 {
+        font-size: 40px;
+    }
+
+    #gameContainer {
+        width: 70vw;
+        left: 15%;
+        top: 40vh;
+    }
+
+    .player {
+        font-size: 12px;
+    }
+
+    #onevsone {
+        top : 13vw;
+        left: 15%;
+        padding: 1.5vh 4vw;
+    }
+
+    #onevscpu {
+        top : 13vw;
+        right: 15%;
+        padding: 1.5vh 5vw;
+    }
+
+    .grid {
+        padding: 5vh 0vw;
+    }
+
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+
+    .grid.connect-four .cell {
+        width: 30px;
+        height: 30px;
+    }
+
+    #gameContainer p {
+        font-size: 40px;
+        left: 35%;
+    }
+
+    header .switch {
+        right: 80vh;
+        top: 7vw;
+    }
+
+    #btnPlay img, #btnReplay img {
+        width: 40px;
+    }
+}
+@media (max-width: 450px) {
+    h1 {
+        font-size: 20px;
+    }
+
+    #gameContainer {
+        width: 70vw;
+        left: 15%;
+        top: 40vh;
+    }
+
+    .player {
+        font-size: 12px;
+    }
+
+    #onevsone {
+
+        left: 5%;
+        padding: 1.5vh 4vw;
+    }
+
+    #onevscpu {
+    
+        right: 5%;
+        padding: 1.5vh 5vw;
+    }
+
+    .grid {
+        padding: 5vh 0vw;
+    }
+
+    .cell {
+        width: 50px;
+        height: 50px;
+    }
+
+    .grid.connect-four .cell {
+        width: 30px;
+        height: 30px;
+    }
+
+    #gameContainer p {
+        font-size: 40px;
+        left: 35%;
+    }
+
+    header .switch {
+        right: 80vh;
+        top: 7vw;
+    }
+
+    #btnPlay img, #btnReplay img {
+        width: 40px;
+    }
+    #btnReplay {
+        top :0px;
+    }
+}
